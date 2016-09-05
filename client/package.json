@@ -34,5 +34,8 @@
     "lite-server": "^2.2.2",
     "typescript": "^1.8.10",
     "typings":"^1.3.2"
+  },
+  "author": {
+    "name": "Peter Kassenaar <info@kassenaar.com>"
   }
 }
