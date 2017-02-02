@@ -1,14 +1,10 @@
 import {Component} from '@angular/core';
 
 @Component({
-	selector: 'ws-app',
-	template:`
-		<h1>Angular 2 WebSockets example</h1>		
-		<create-message></create-message>
-		<hr />	
-		<chat-component></chat-component>						
-	`	
+	moduleId   : module.id,
+	selector   : 'ws-app',
+	templateUrl: 'app.component.html'
 })
-export class AppComponent{
-	
+export class AppComponent {
+
 }

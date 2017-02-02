@@ -1,5 +1,6 @@
 node_modules/
 typings/
+.idea
 build/
 npm-debug.log
 app/**/*.js

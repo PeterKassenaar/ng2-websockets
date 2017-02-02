@@ -1,6 +1,5 @@
-import { ChatService, Message  } from '../shared/services/chat.service';
-import { Component, ElementRef  } from '@angular/core';
-import * as Rx from 'rxjs/Rx';
+import { Component  } from '@angular/core';
+import { ChatService, Message } from '../shared/services/chat.service';
 
 @Component({
 	selector: 'chat-component',
@@ -12,7 +11,7 @@ import * as Rx from 'rxjs/Rx';
 	`
 })
 export class ChatComponent {
-	private messages: Message[] = [];
+	messages: Message[] = [];
 	constructor(private chatService: ChatService) {
 		chatService.messages.subscribe(msg => {			
 			this.messages.push(msg);
