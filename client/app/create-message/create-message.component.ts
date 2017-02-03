@@ -27,7 +27,7 @@ export class CreateMessage {
 	private message = {
 		author: 'peter',
 		message: ''
-	}
+	};
 	constructor(private chatService: ChatService) {
 
 	}

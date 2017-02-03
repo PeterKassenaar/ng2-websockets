@@ -1,6 +1,7 @@
-import {Injectable, OnInit} from '@angular/core';
-import {Observable, Subject} from 'rxjs/Rx';
+import {Injectable} from '@angular/core';
+import {Subject} from 'rxjs/Subject';
 import {WebSocketService} from './websocket.service';
+import 'rxjs/add/operator/map';
 
 const CHAT_URL = 'ws://localhost:3005';
 const DATA_URL = 'ws://localhost:3006';
@@ -12,7 +13,7 @@ export interface Message {
 }
 
 @Injectable()
-export class ChatService implements OnInit {
+export class ChatService {
 	public messages: Subject<Message>  = new Subject<Message>();
 	public randomData: Subject<number> = new Subject<number>();
 
@@ -29,16 +30,13 @@ export class ChatService implements OnInit {
 					newDate: data.newDate
 				}
 			});
+
+
 		// 2. subscribe to random data
 		this.randomData = <Subject<number>>this.wsService
 			.connectData(DATA_URL)
 			.map((response: any): number => {
-				let num = response.data;
-				return num;
+				return response.data;
 			})
-	}
-
-	ngOnInit() {
-
 	}
 } // end class ChatService

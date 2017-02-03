@@ -1,23 +1,26 @@
 import {Injectable} from '@angular/core';
-import * as Rx from 'rxjs/Rx';
+import {Observable} from 'rxjs/Observable';
+import {Subject} from 'rxjs/Subject';
+import {Observer} from "rxjs/Observer";
 
 @Injectable()
 export class WebSocketService {
-	private subject: Rx.Subject<MessageEvent>;
-	private subjectData: Rx.Subject<number>;
+	private subject: Subject<MessageEvent>;
+	private subjectData: Subject<number>;
 
 	// For chat box
-	public connect(url: string): Rx.Subject<MessageEvent> {
+	public connect(url: string): Subject<MessageEvent> {
 		if (!this.subject) {
 			this.subject = this.create(url);
 		}
 		return this.subject;
 	}
-	private create(url: string): Rx.Subject<MessageEvent> {
+
+	private create(url: string): Subject<MessageEvent> {
 		let ws = new WebSocket(url);
 
-		let observable = Rx.Observable.create(
-			(obs: Rx.Observer<MessageEvent>) => {
+		let observable = Observable.create(
+			(obs: Observer<MessageEvent>) => {
 				ws.onmessage = obs.next.bind(obs);
 				ws.onerror   = obs.error.bind(obs);
 				ws.onclose   = obs.complete.bind(obs);
@@ -33,22 +36,22 @@ export class WebSocketService {
 			}
 		};
 
-		return Rx.Subject.create(observer, observable);
+		return Subject.create(observer, observable);
 	}
 
 	// For random numbers
-	public connectData(url: string): Rx.Subject<number> {
+	public connectData(url: string): Subject<number> {
 		if (!this.subjectData) {
 			this.subjectData = this.createData(url);
 		}
 		return this.subjectData;
 	}
 
-	private createData(url: string): Rx.Subject<number> {
+	private createData(url: string): Subject<number> {
 		let ws = new WebSocket(url);
 
-		let observable = Rx.Observable.create(
-			(obs: Rx.Observer<number>) => {
+		let observable = Observable.create(
+			(obs: Observer<number>) => {
 				ws.onmessage = obs.next.bind(obs);
 				ws.onerror   = obs.error.bind(obs);
 				ws.onclose   = obs.complete.bind(obs);
@@ -64,6 +67,6 @@ export class WebSocketService {
 			}
 		};
 
-		return Rx.Subject.create(observer, observable);
+		return Subject.create(observer, observable);
 	}
 } // end class WebSocketService
