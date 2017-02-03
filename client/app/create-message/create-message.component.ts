@@ -1,12 +1,11 @@
-import { Component } from '@angular/core';
-import { ChatService } from '../shared/services/chat.service';
+import {Component} from '@angular/core';
+import {ChatService} from '../shared/services/chat.service';
 
 @Component({
 	selector: 'create-message',
 	template: `
 	<h2>New message:</h2>	
-		<form>
-		  <div class="input-group col-xs-8">
+		  <div class="input-group col-xs-8">		   
                 <input
                     [(ngModel)]="message.message"
                     name="msg"                    
@@ -19,15 +18,15 @@ import { ChatService } from '../shared/services/chat.service';
                         (click)="sendMsg()">send</button>
                 </span>
             </div>
-		</form>
+	
 	`,
 })
-export class CreateMessage {	
-	btnDisabled: boolean = false;	
+export class CreateMessage {
 	private message = {
-		author: 'peter',
+		author : 'peter',
 		message: ''
 	};
+
 	constructor(private chatService: ChatService) {
 
 	}
