@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {Subject} from 'rxjs/Subject';
 import {WebSocketService} from './websocket.service';
 import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/filter';
 
 const CHAT_URL = 'ws://localhost:3005';
 const DATA_URL = 'ws://localhost:3006';

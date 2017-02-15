@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ChatService} from '../shared/services/chat.service';
 
 @Component({
@@ -10,12 +10,15 @@ import {ChatService} from '../shared/services/chat.service';
 		</div>
 	`
 })
-export class DataComponent {
+export class DataComponent implements OnInit{
 
 	randomData: number[] = [];
 
 	constructor(private chatService: ChatService) {
-		chatService.randomData.subscribe(num => {
+	}
+
+	ngOnInit(){
+		this.chatService.randomData.subscribe(num => {
 			this.randomData.push(num);
 			// reset if there are 20 numbers in the array
 			if (this.randomData.length > 20) {
