@@ -5,7 +5,7 @@ import {ChatService} from '../shared/services/chat.service';
 	selector: 'data-component',
 	template: `
 		<div class="data">
-			<h2>Recieved data ({{randomData.length}}, reset after 20): </h2>
+			<h2>Received data ({{randomData.length}}, reset after 20): </h2>
 			<p *ngFor="let data of randomData">{{ data }}</p>
 		</div>
 	`
