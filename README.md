@@ -1,3 +1,5 @@
+[[status: unmaintained - this repository is not updated anymore]]
+
 # ng2-websockets
 Example project of using WebSockets in an Angular 2 application.
 
