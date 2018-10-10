@@ -1,4 +1,4 @@
-[[status: unmaintained - this repository is not updated anymore]]
+[status: unmaintained - though the code still works, this repository is not updated anymore]
 
 # ng2-websockets
 Example project of using WebSockets in an Angular 2 application.
